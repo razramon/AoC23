@@ -16,28 +16,25 @@ def main():
         for line in lines[1].split("\n"):
             line = line.split("=")
             to = line[1].strip().split(", ")
-            parts[line[0].strip()] = [to[0][1:],to[1][:-1]]
-    #print(parts)
+            parts[line[0].strip()] = [to[0][1:], to[1][:-1]]
     steps = 0
     inf_loop = False
-    curr = 'AAA'
-    while(curr != "ZZZ" and not inf_loop):
+    curr = "AAA"
+    while curr != "ZZZ" and not inf_loop:
         for ins in inst:
-            #print(ins)
-            if(curr == parts[curr][1] == parts[curr][0]):
+            if curr == parts[curr][1] == parts[curr][0]:
                 print("inf loop")
                 inf_loop == True
                 break
-            if(ins == "R"):
+            if ins == "R":
                 curr = parts[curr][1]
             else:
                 curr = parts[curr][0]
             steps += 1
-            #print(curr)
-        if(steps %10000 == 0):
+        if steps % 10000 == 0:
             print(steps)
     print(steps)
-            
+
 
 if __name__ == "__main__":
     t1 = time.perf_counter()

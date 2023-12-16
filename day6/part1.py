@@ -18,12 +18,12 @@ def main():
     ways = 1
     for i in range(len(t)):
         way = 0
-        for j in range(1,t[i]):
-            if(j*(t[i]-j) > dis[i]):
+        for j in range(1, t[i]):
+            if j * (t[i] - j) > dis[i]:
                 way += 1
         ways *= way
     print(ways)
-            
+
 
 if __name__ == "__main__":
     t1 = time.perf_counter()

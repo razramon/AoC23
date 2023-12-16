@@ -12,16 +12,16 @@ def main():
     with open(INPUT_FILE, mode="rt") as f:
         for line in f.readlines():
             parts = line.strip().split(":")[1].split("|")
-            cards.append([parts[0].strip().split(" "),parts[1].strip().split(" ")])
+            cards.append([parts[0].strip().split(" "), parts[1].strip().split(" ")])
     points = 0
     for card in cards:
         point = 0
         for x in card[1]:
-            if(not x.isdigit()):
+            if not x.isdigit():
                 continue
-            if(x in card[0]):
+            if x in card[0]:
                 card[0].remove(x)
-                if(point == 0):
+                if point == 0:
                     point = 1
                 else:
                     point *= 2
@@ -35,4 +35,3 @@ if __name__ == "__main__":
     main()
     t2 = time.perf_counter()
     print(f"Execution time: {t2 - t1:0.4f} seconds")
-    

@@ -8,8 +8,10 @@ from termcolor import colored
 SCRIPT_DIR = Path(__file__).parent
 INPUT_FILE = Path(SCRIPT_DIR, "input.txt")
 
+
 def lcm(a, b):
-    return abs(a*b) // math.gcd(a, b)
+    return abs(a * b) // math.gcd(a, b)
+
 
 def main():
     parts = defaultdict(list)
@@ -19,26 +21,24 @@ def main():
         for line in lines[1].split("\n"):
             line = line.split("=")
             to = line[1].strip().split(", ")
-            parts[line[0].strip()] = [to[0][1:],to[1][:-1]]
-    #print(parts)
+            parts[line[0].strip()] = [to[0][1:], to[1][:-1]]
     got = []
-    inf_loop = False
     start = [key for key in parts.keys() if key[2] == "A"]
     for curr in start:
         steps = 0
-        while(curr[2] != "Z"):
+        while curr[2] != "Z":
             for ins in inst:
-                if(ins == "R"):
+                if ins == "R":
                     curr = parts[curr][1]
                 else:
                     curr = parts[curr][0]
                 steps += 1
         got.append(steps)
     result = got[0]
-    for x in range(1,len(got)):
-        result = lcm(got[x],result)
+    for x in range(1, len(got)):
+        result = lcm(got[x], result)
     print(result)
-                
+
 
 if __name__ == "__main__":
     t1 = time.perf_counter()

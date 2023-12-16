@@ -12,15 +12,17 @@ def main():
     with open(INPUT_FILE, mode="rt") as f:
         parts = f.readlines()
     t = int("".join([x for x in parts[0].split(":")[1].strip().split(" ") if x != ""]))
-    dis = int("".join([x for x in parts[1].split(":")[1].strip().split(" ") if x != ""]))
+    dis = int(
+        "".join([x for x in parts[1].split(":")[1].strip().split(" ") if x != ""])
+    )
     print(t, dis)
 
     way = 0
-    for j in range(1,t):
-        if(j*(t-j) > dis):
+    for j in range(1, t):
+        if j * (t - j) > dis:
             way += 1
     print(way)
-            
+
 
 if __name__ == "__main__":
     t1 = time.perf_counter()
