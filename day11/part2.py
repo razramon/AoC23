@@ -34,19 +34,19 @@ def main():
     for i in range(len(galax)):
         for j in range(i + 1, len(galax)):
             empty = 0
+            minn = min(galax[i][0], galax[j][0])
+            maxx = max(galax[i][0], galax[j][0])
             for x in rows_empty:
-                minn = min(galax[i][0], galax[j][0])
-                maxx = max(galax[i][0], galax[j][0])
                 if minn <= x <= maxx:
                     empty += 1
+            minn = min(galax[i][1], galax[j][1])
+            maxx = max(galax[i][1], galax[j][1])
             for x in colums_empty:
-                minn = min(galax[i][1], galax[j][1])
-                maxx = max(galax[i][1], galax[j][1])
                 if minn <= x <= maxx:
                     empty += 1
             dist.append(
                 sum(abs(a - b) for a, b, in zip(galax[i], galax[j]))
-                + empty * addition
+                + empty * (addition - 1)
                 - empty # remove duplicates
             )  
     print(sum(dist))
